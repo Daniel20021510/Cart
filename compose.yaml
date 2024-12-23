@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres-cart
+    environment:
+      POSTGRES_USER: cart
+      POSTGRES_PASSWORD: cart
+      POSTGRES_DB: cart
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_cart:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  postgres_data_cart:

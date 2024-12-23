@@ -1,0 +1,32 @@
+type Cart {
+    totalPrice: Int
+    items: [Item]
+}
+
+type Item {
+    sku: Int
+    count: Int
+    product: Product
+}
+
+type Product {
+    name: String
+    price: Float
+}
+
+type Query {
+    getCart(userID: ID!): Cart!
+    hello: String!
+}
+
+
+input AddItem {
+    sku: Int!
+    count: Int!
+}
+
+type Mutation {
+    addItem(userID: ID!, addItem: AddItem!): Boolean
+    deleteItem(userID: ID!, sku: Int!): Boolean
+    deleteCart(userID: ID!): Boolean
+}
